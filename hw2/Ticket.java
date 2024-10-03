@@ -1,4 +1,3 @@
-
 public class Ticket {
     private String id;
     private String concertHall;
@@ -7,8 +6,12 @@ public class Ticket {
     private boolean isPromo;
     private char stadiumSector;
     private float maxAllowedWeight;
+    private long createdAt;
+    private double price;
 
-    public Ticket() {}
+    public Ticket() {
+        setCreatedAt();
+    }
 
     public Ticket(
             String id,
@@ -20,6 +23,7 @@ public class Ticket {
             float maxAllowedWeight
     ) {
 
+        setCreatedAt();
         setId(id);
         setHall(concertHall);
         setEventCode(eventCode);
@@ -34,9 +38,15 @@ public class Ticket {
             int eventCode,
             long time
     ) {
+
+        setCreatedAt();
         setHall(concertHall);
         setEventCode(eventCode);
         setTime(time);
+    }
+
+    private void setCreatedAt() {
+        this.createdAt = System.currentTimeMillis();
     }
 
     private void setId(String newId) {
@@ -83,6 +93,28 @@ public class Ticket {
 
     private void setMaxAllowedWeight(float maxAllowedWeight) {
         this.maxAllowedWeight = maxAllowedWeight;
+    }
+
+
+    public void setPrice(double newPrice) {
+        this.price = newPrice;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void getInfo() {
+        System.out.println("");
+        System.out.println("ID: " + this.id);
+        System.out.println("Concert Hall: " + this.concertHall);
+        System.out.println("Event Code: " + this.eventCode);
+        System.out.println("Time: " + this.time);
+        System.out.println("IsPromo: " + this.isPromo);
+        System.out.println("Stadium Sector: " + this.stadiumSector);
+        System.out.println("Max Allowed Weight: " + this.maxAllowedWeight);
+        System.out.println("Price: " + this.price);
+        System.out.println("Created At: " + this.createdAt);
     }
 
 }
