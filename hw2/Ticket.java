@@ -117,4 +117,9 @@ public class Ticket {
         System.out.println("Created At: " + this.createdAt);
     }
 
+
+    public String getId() {
+        return this.id;
+    }
+
 }
