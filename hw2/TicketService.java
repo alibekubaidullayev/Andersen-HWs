@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TicketService {
@@ -10,10 +8,11 @@ public class TicketService {
         tickets.put(ticket.getId(), ticket);
     }
 
+    public static Ticket getTicket(String id) {
+        return tickets.get(id);
+    }
+
     public static void main(String[] args) {
-        Ticket empty = new Ticket();
-        Ticket limited = new Ticket("Astana", 124, 14);
-        Ticket full = new Ticket("145", "Astana", 412, 14, true, 'B', 12);
 
         addTicket(new Ticket("145", "Astana", 412, 14, true, 'B', 12));
         addTicket(new Ticket("146", "Astana", 412, 14, true, 'B', 12));
@@ -26,8 +25,7 @@ public class TicketService {
         addTicket(new Ticket("141", "Astana", 412, 14, true, 'B', 12));
         addTicket(new Ticket("140", "Astana", 412, 14, true, 'B', 12));
 
-        empty.getInfo();
-        limited.getInfo();
-        full.getInfo();
+        getTicket("144").getInfo();
+
     }
 }
