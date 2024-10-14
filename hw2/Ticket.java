@@ -1,5 +1,7 @@
-public class Ticket {
-    private String id;
+import java.util.Objects;
+
+public class Ticket extends Base {
+
     private String concertHall;
     private int eventCode;
     private long time;
@@ -14,7 +16,7 @@ public class Ticket {
     }
 
     public Ticket(
-            String id,
+            int ID,
             String concertHall,
             int eventCode,
             long time,
@@ -24,7 +26,7 @@ public class Ticket {
     ) {
 
         setCreatedAt();
-        setId(id);
+        setID(ID);
         setHall(concertHall);
         setEventCode(eventCode);
         setTime(time);
@@ -49,13 +51,6 @@ public class Ticket {
         this.createdAt = System.currentTimeMillis();
     }
 
-    private void setId(String newId) {
-        if(newId.length() > 4) {
-            throw new IllegalArgumentException("ID should be no longer than 4 characters");
-        } else {
-            this.id = newId;
-        }
-    }
 
     private void setHall(String hall) {
         if(hall.length() > 10) {
@@ -74,7 +69,7 @@ public class Ticket {
         }
     }
 
-    private void setTime(long newTime) {
+    public void setTime(long newTime) {
         this.time = newTime;
     }
 
@@ -82,7 +77,7 @@ public class Ticket {
         this.isPromo = isPromo;
     }
 
-    private void setStadiumSector(char stadiumSector) {
+    public void setStadiumSector(char stadiumSector) {
         if(stadiumSector < 'A' || stadiumSector > 'C') {
             throw new IllegalArgumentException("Stadium sector should be in range 'A' and 'C'");
         }
@@ -104,9 +99,18 @@ public class Ticket {
         return this.price;
     }
 
+    public void shared(String phoneNumber) {
+        System.out.println("Ticket with ID:" + this.getID() + " shared via phone number " + phoneNumber);
+    }
+
+    public void shared(String phoneNumber, String email) {
+        System.out.println("Ticket with ID:" + this.getID() + " shared via phone number " + phoneNumber + " and email " + email);
+    }
+
     public void getInfo() {
-        System.out.println("");
-        System.out.println("ID: " + this.id);
+
+        System.out.println();
+        System.out.println("ID: " + this.ID);
         System.out.println("Concert Hall: " + this.concertHall);
         System.out.println("Event Code: " + this.eventCode);
         System.out.println("Time: " + this.time);
@@ -117,9 +121,33 @@ public class Ticket {
         System.out.println("Created At: " + this.createdAt);
     }
 
-
-    public String getId() {
-        return this.id;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Ticket ticket = (Ticket) obj;
+        return ID == ticket.ID;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ID);
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket [" +
+                "ID=" + ID +
+                ", concertHall='" + concertHall + '\'' +
+                ", eventCode=" + eventCode +
+                ", time=" + time +
+                ", isPromo=" + isPromo +
+                ", stadiumSector=" + stadiumSector +
+                ", maxAllowedWeight=" + maxAllowedWeight +
+                ", createdAt=" + createdAt +
+                ", price=" + price +
+                ']';
+    }
+
 
 }

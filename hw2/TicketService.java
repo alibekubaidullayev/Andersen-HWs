@@ -2,30 +2,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TicketService {
-    private static Map<String, Ticket> tickets = new HashMap<>();
+    private static Map<Integer, Ticket> tickets = new HashMap<>();
 
     public static void addTicket(Ticket ticket) {
-        tickets.put(ticket.getId(), ticket);
+        tickets.put(ticket.getID(), ticket);
     }
 
-    public static Ticket getTicket(String id) {
+    public static Ticket getTicket(int id) {
         return tickets.get(id);
     }
 
+
     public static void main(String[] args) {
+        Ticket ticket1 = new Ticket(1, "Arena1", 101, System.currentTimeMillis(), false, 'A', 75.0f);
+        Ticket ticket2 = new Ticket(2, "Arena2", 102, System.currentTimeMillis(), true, 'B', 80.0f);
+        Ticket ticket3 = new Ticket(3, "Arena3", 103, System.currentTimeMillis(), false, 'C', 85.0f);
 
-        addTicket(new Ticket("145", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("146", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("147", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("148", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("149", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("144", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("143", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("142", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("141", "Astana", 412, 14, true, 'B', 12));
-        addTicket(new Ticket("140", "Astana", 412, 14, true, 'B', 12));
+        addTicket(ticket1);
+        addTicket(ticket2);
+        addTicket(ticket3);
 
-        getTicket("144").getInfo();
+        ticket1.shared("88888");
+        ticket2.shared("88888", "email@example.com");
+        Client client = new Client();
+        Admin admin = new Admin();
+        client.getTicket(ticket1);
+        admin.checkTicket(ticket2);
+        admin.checkTicket(ticket3);
 
+        System.out.println(ticket1);
+
+        Ticket ticket = new Ticket();
     }
 }
