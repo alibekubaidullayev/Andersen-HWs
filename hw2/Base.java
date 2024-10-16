@@ -1,12 +1,8 @@
-public abstract class Base {
-    protected int ID;
+public abstract class Base implements Printable {
+    private final int ID;
 
-    public void print() {
-        System.out.println("print content in console");
-    };
-
-    protected void setID(int ID) {
-        this.ID = ID;
+    public Base() {
+        this.ID = IdGenerator.generateId();
     }
 
     public int getID() {
@@ -14,3 +10,4 @@ public abstract class Base {
     }
 
 }
+

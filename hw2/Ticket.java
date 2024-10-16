@@ -16,7 +16,6 @@ public class Ticket extends Base {
     }
 
     public Ticket(
-            int ID,
             String concertHall,
             int eventCode,
             long time,
@@ -26,7 +25,6 @@ public class Ticket extends Base {
     ) {
 
         setCreatedAt();
-        setID(ID);
         setHall(concertHall);
         setEventCode(eventCode);
         setTime(time);
@@ -110,7 +108,7 @@ public class Ticket extends Base {
     public void getInfo() {
 
         System.out.println();
-        System.out.println("ID: " + this.ID);
+        System.out.println("ID: " + this.getID());
         System.out.println("Concert Hall: " + this.concertHall);
         System.out.println("Event Code: " + this.eventCode);
         System.out.println("Time: " + this.time);
@@ -126,18 +124,18 @@ public class Ticket extends Base {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Ticket ticket = (Ticket) obj;
-        return ID == ticket.ID;
+        return this.getID() == ticket.getID();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID);
+        return Objects.hash(this.getID());
     }
 
     @Override
     public String toString() {
         return "Ticket [" +
-                "ID=" + ID +
+                "ID=" + this.getID() +
                 ", concertHall='" + concertHall + '\'' +
                 ", eventCode=" + eventCode +
                 ", time=" + time +
@@ -147,6 +145,11 @@ public class Ticket extends Base {
                 ", createdAt=" + createdAt +
                 ", price=" + price +
                 ']';
+    }
+
+    @Override
+    public void print() {
+        System.out.println(this.toString());
     }
 
 

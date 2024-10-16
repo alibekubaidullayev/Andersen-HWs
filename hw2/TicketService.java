@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class TicketService {
+public class TicketService extends Base {
     private static Map<Integer, Ticket> tickets = new HashMap<>();
 
     public static void addTicket(Ticket ticket) {
@@ -14,9 +14,9 @@ public class TicketService {
 
 
     public static void main(String[] args) {
-        Ticket ticket1 = new Ticket(1, "Arena1", 101, System.currentTimeMillis(), false, 'A', 75.0f);
-        Ticket ticket2 = new Ticket(2, "Arena2", 102, System.currentTimeMillis(), true, 'B', 80.0f);
-        Ticket ticket3 = new Ticket(3, "Arena3", 103, System.currentTimeMillis(), false, 'C', 85.0f);
+        Ticket ticket1 = new Ticket( "Arena1", 101, System.currentTimeMillis(), false, 'A', 75.0f);
+        Ticket ticket2 = new Ticket( "Arena2", 102, System.currentTimeMillis(), true, 'B', 80.0f);
+        Ticket ticket3 = new Ticket( "Arena3", 103, System.currentTimeMillis(), false, 'C', 85.0f);
 
         addTicket(ticket1);
         addTicket(ticket2);
