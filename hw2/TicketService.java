@@ -34,4 +34,9 @@ public class TicketService extends Base {
 
         Ticket ticket = new Ticket();
     }
+
+    @Override
+    public void print() {
+        System.out.println("Printing Tickets Service");
+    }
 }

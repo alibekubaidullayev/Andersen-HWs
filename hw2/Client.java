@@ -8,4 +8,10 @@ public class Client extends UserBase {
     public void getTicket(Ticket t) {
         System.out.println("Ticket " + t.getID() + " received by USER" + this.getID());
     }
+
+    @Override
+    public void print() {
+        System.out.println("Client " + this.getID());
+    }
+
 }
